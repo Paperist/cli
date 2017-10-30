@@ -25,7 +25,7 @@ jobs:
             - dist
             - releases
           key: v1-build-{{ .Environment.CIRCLE_SHA1 }}
-  deploy:
+  deploy-npm:
     docker:
       - image: circleci/node:8
     steps:
@@ -36,7 +36,15 @@ jobs:
           command: |
             echo "//registry.npmjs.org/:_authToken=$NPM_TOKEN" >> ~/.npmrc
             npm publish ---access public
-            yarn run release --token $GITHUB_TOKEN
+  deploy-release:
+    docker:
+      - image: circleci/golang:latest
+    steps:
+      - checkout
+      - restore_cache:
+          key: v1-build-{{ .Environment.CIRCLE_SHA1 }}
+      - run: go get github.com/tcnksm/ghr
+      - run: ghr $CIRCLE_TAG binaries/
 
 workflows:
   version: 2
@@ -46,7 +54,15 @@ workflows:
           filters:
             tags:
               only: /.*/
-      - deploy:
+      - deploy-npm:
+          requires:
+            - build
+          filters:
+            tags:
+              only: /v\d+(\.\d+)*/
+            branches:
+              ignore: /.*/
+      - deploy-release:
           requires:
             - build
           filters:
