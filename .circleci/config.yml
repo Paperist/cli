@@ -7,7 +7,6 @@ jobs:
   build:
     docker:
       - image: circleci/node:8
-    working_directory: /workdir
     steps:
       - checkout
       - restore_cache:
@@ -29,7 +28,6 @@ jobs:
   deploy:
     docker:
       - image: circleci/node:8
-    working_directory: /workdir
     steps:
       - checkout
       - restore_cache:
@@ -37,14 +35,17 @@ jobs:
       - run:
           command: |
             echo "//registry.npmjs.org/:_authToken=$NPM_TOKEN" >> ~/.npmrc
-            yarn publish --access=public
+            npm publish ---access public
             yarn run release --token $GITHUB_TOKEN
 
 workflows:
   version: 2
   build-deploy:
     jobs:
-      - build
+      - build:
+          filters:
+            tags:
+              only: /.*/
       - deploy:
           requires:
             - build
