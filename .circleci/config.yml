@@ -23,7 +23,7 @@ jobs:
       - save_cache:
           paths:
             - dist
-            - releases
+            - binaries
           key: v1-build-{{ .Environment.CIRCLE_SHA1 }}
   deploy-npm:
     docker:
