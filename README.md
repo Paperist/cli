@@ -32,13 +32,13 @@
 
 ## Install
 
-Download [releases](https://github.com/Paperist/cli/releases)
-
-**--- OR ---**
-
 ```
 npm install --global @paperist/cli
 ```
+
+**--- OR ---**
+
+Download [releases](https://github.com/Paperist/cli/releases)
 
 ## Usage
 
