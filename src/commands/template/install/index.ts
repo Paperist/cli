@@ -1,9 +1,9 @@
 import { Argv, Arguments } from 'yargs';
 import * as Listr from 'listr';
 import { autobind } from 'core-decorators';
-import Command from '../Command';
-import findBaseDir from '../../utils/findBaseDir';
-import Package from '../../utils/Package';
+import Command from '../../Command';
+import findBaseDir from '../../../utils/findBaseDir';
+import TemplatePackage from '../../../utils/TemplatePackage';
 
 interface InstallArguments extends Arguments {
   quiet: boolean;
@@ -12,7 +12,8 @@ interface InstallArguments extends Arguments {
 
 class Install extends Command<InstallArguments> {
   public command = 'install';
-  public describe = '';
+  public describe = 'Install template';
+  public aliases = ['add'];
 
   public tasks = new Listr<InstallArguments>([
     {
@@ -27,7 +28,7 @@ class Install extends Command<InstallArguments> {
           packageNameList.map(packageName => ({
             title: packageName,
             task() {
-              const pkg = new Package(packageName, baseDir);
+              const pkg = new TemplatePackage(packageName, baseDir);
               return new Listr<InstallArguments>([
                 {
                   title: 'Initialize',
@@ -67,7 +68,7 @@ class Install extends Command<InstallArguments> {
 
   @autobind()
   builder(yargs: Argv) {
-    return yargs.options({
+    return yargs.demandCommand(1).options({
       withExample: {
         alias: 'w',
         describe: 'Install with example',

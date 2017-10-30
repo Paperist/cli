@@ -10,7 +10,7 @@ interface CleanArguments extends Arguments {
 
 class Clean extends Command<CleanArguments> {
   public command = 'clean';
-  public describe = '';
+  public describe = 'Clean files';
 
   public tasks = new Listr<CleanArguments>([
     {

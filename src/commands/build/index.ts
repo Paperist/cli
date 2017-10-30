@@ -15,7 +15,7 @@ interface BuildArguments extends Arguments {
 
 class Build extends Command<BuildArguments> {
   public command = 'build';
-  public describe = '';
+  public describe = 'Build PDF';
 
   public tasks = new Listr<BuildArguments>([
     {

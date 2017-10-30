@@ -14,10 +14,9 @@
   "version": "0.0.3",
   "main": "./dist/index.js",
   "bin": {
-    "paperist": "./cli/index.js"
+    "paperist": "./dist/index.js"
   },
   "files": [
-    "cli",
     "dist"
   ],
   "scripts": {

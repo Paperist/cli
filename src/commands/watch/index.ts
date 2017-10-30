@@ -14,7 +14,7 @@ interface WatchArguments extends Arguments {
 
 class Watch extends Command<WatchArguments> {
   public command = 'watch';
-  public describe = '';
+  public describe = 'Watch project';
   private running = false;
   private waiting = false;
 

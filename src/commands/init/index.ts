@@ -11,7 +11,7 @@ interface InitArguments extends Arguments {
 
 class Init extends Command<InitArguments> {
   public command = 'init';
-  public describe = '';
+  public describe = 'Initialize new project';
 
   public tasks = new Listr<InitArguments>([
     {

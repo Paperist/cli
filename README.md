@@ -38,7 +38,7 @@ npm install --global @paperist/cli
 
 **--- OR ---**
 
-Download [releases](https://github.com/Paperist/cli/releases)
+Download from [releases](https://github.com/Paperist/cli/releases)
 
 ## Usage
 
@@ -60,33 +60,35 @@ paperist build
 paperist watch
 ```
 
-### Install templates
+### Templates
+
+#### Install templates
 
 Install template from GitHub.
 
 ```
-paperist install paperist/template-example
+paperist template install paperist/template-example
 ```
 
 If you want to install with examples, append `--with-example` or `-w` flags.
 
 ```
-paperist install paperist/template-example --with-example
+paperist template install paperist/template-example --with-example
 ```
 
 Support GitHub / GitLab / Bitbuckets.
 
 ```
 # If template dosen't exist on GitHub, add prefix.
-paperist install gitlab:paperist/template-example
+paperist template install gitlab:paperist/template-example
 ```
 
-### Uninstall templates
+#### Uninstall templates
 
 Only remove plugin dependencies.
 
 ```
-paperist uninstall paperist/template-example
+paperist template uninstall paperist/template-example
 ```
 
 ## Contribute

@@ -21,7 +21,7 @@ const installConfigList = [
   { overwrite: false, ignore: ig().add(exampleIgnoreString) },
 ];
 
-export interface PackageConfig {
+export interface TemplatePackageConfig {
   name: string;
   plugins?: {
     [pluginName: string]: any;
@@ -33,10 +33,10 @@ export interface PackageConfig {
   }[];
 }
 
-export default class Package {
+export default class TemplatePackage {
   public gitInfo: hostedGitInfo.Result;
   public tmpInfo: tmp.AynchrounousResult;
-  public config: PackageConfig;
+  public config: TemplatePackageConfig;
   public projectConfig: Config;
 
   constructor(public packageName: string, public baseDir: string) {

@@ -1,8 +1,9 @@
-import { Arguments } from 'yargs';
+import { Argv, Arguments } from 'yargs';
 import * as Listr from 'listr';
-import Command from '../Command';
-import findBaseDir from '../../utils/findBaseDir';
-import Package from '../../utils/Package';
+import { autobind } from 'core-decorators';
+import Command from '../../Command';
+import findBaseDir from '../../../utils/findBaseDir';
+import TemplatePackage from '../../../utils/TemplatePackage';
 
 interface UninstallArguments extends Arguments {
   quiet: boolean;
@@ -10,7 +11,8 @@ interface UninstallArguments extends Arguments {
 
 class Uninstall extends Command<UninstallArguments> {
   public command = 'uninstall';
-  public describe = '';
+  public describe = "Uninstall template's dependencies";
+  public aliases = ['remove'];
 
   public tasks = new Listr<UninstallArguments>([
     {
@@ -25,7 +27,7 @@ class Uninstall extends Command<UninstallArguments> {
           packageNameList.map(packageName => ({
             title: packageName,
             task() {
-              const pkg = new Package(packageName, baseDir);
+              const pkg = new TemplatePackage(packageName, baseDir);
               return new Listr<UninstallArguments>([
                 {
                   title: 'Initialize',
@@ -50,6 +52,11 @@ class Uninstall extends Command<UninstallArguments> {
       },
     },
   ]);
+
+  @autobind()
+  builder(yargs: Argv) {
+    return yargs.demandCommand(1);
+  }
 }
 
 export default new Uninstall();

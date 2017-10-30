@@ -4,8 +4,7 @@ import init from './commands/init';
 import build from './commands/build';
 import watch from './commands/watch';
 import clean from './commands/clean';
-import install from './commands/install';
-import uninstall from './commands/uninstall';
+import template from './commands/template';
 
 console.log = () => {};
 
@@ -14,8 +13,7 @@ yargs
   .command(build)
   .command(watch)
   .command(clean)
-  .command(install)
-  .command(uninstall)
+  .command(template)
   .options({
     quiet: {
       alias: 'q',
