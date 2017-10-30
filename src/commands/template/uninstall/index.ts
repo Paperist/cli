@@ -18,7 +18,7 @@ class Uninstall extends Command<UninstallArguments> {
     {
       title: 'Uninstall',
       async task(ctx, _task) {
-        const [, ...packageNameList] = ctx._;
+        const packageNameList = ctx._.splice(2);
         if (packageNameList.length === 0) {
           return;
         }

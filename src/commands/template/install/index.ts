@@ -19,7 +19,7 @@ class Install extends Command<InstallArguments> {
     {
       title: 'Install',
       async task(ctx, _task) {
-        const [, ...packageNameList] = ctx._;
+        const packageNameList = ctx._.splice(2);
         if (packageNameList.length === 0) {
           return;
         }
