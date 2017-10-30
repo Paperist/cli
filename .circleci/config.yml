@@ -44,7 +44,7 @@ jobs:
       - restore_cache:
           key: v1-build-{{ .Environment.CIRCLE_SHA1 }}
       - run: go get github.com/tcnksm/ghr
-      - run: ghr $CIRCLE_TAG binaries/
+      - run: ghr --username $CIRCLE_PROJECT_USERNAME $CIRCLE_TAG binaries/
 
 workflows:
   version: 2
