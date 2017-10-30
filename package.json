@@ -11,12 +11,14 @@
   "bugs": {
     "url": "https://github.com/Paperist/cli/issues"
   },
-  "version": "0.0.0",
+  "version": "0.0.1",
   "main": "./dist/index.js",
   "bin": {
     "paperist": "./dist/index.js"
   },
-  "files": ["dist"],
+  "files": [
+    "dist"
+  ],
   "scripts": {
     "build": "npm-run-all -s build:src build:pkg",
     "build:pkg": "pkg . --out-path ./binaries",
@@ -83,7 +85,9 @@
     "ts-node": "^3.3.0",
     "typescript": "^2.5.3"
   },
-  "keywords": ["paperist"],
+  "keywords": [
+    "paperist"
+  ],
   "engines": {
     "node": ">=8.0.0"
   }
