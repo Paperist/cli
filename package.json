@@ -11,7 +11,7 @@
   "bugs": {
     "url": "https://github.com/Paperist/cli/issues"
   },
-  "version": "0.0.3",
+  "version": "0.0.4",
   "main": "./dist/index.js",
   "bin": {
     "paperist": "./dist/index.js"
