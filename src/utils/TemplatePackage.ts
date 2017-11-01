@@ -92,7 +92,7 @@ export default class TemplatePackage {
     if (!await fs.pathExists(pluginConfigPath)) {
       throw new Error(`"${info.https()}" hasn't "paperist.plugin.yml"`);
     }
-    this.config = YAML.safeLoad(await fs.readFile(pluginConfigPath, 'utf8'));
+    this.config = YAML.safeLoad(await fs.readFile(pluginConfigPath, 'utf8')) || {};
   }
 
   async fetch() {

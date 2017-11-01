@@ -39,7 +39,7 @@ export default class Config {
     return merged;
   }
 
-  async write(opts: any, overwrite = false) {
+  async write(opts: any = {}, overwrite = false) {
     const base = await this.load();
     let merged: any;
     if (overwrite) {
