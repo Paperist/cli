@@ -41,8 +41,10 @@ export default async function markdownToLaTeX(filePath: string, baseDir: string,
         latex: convertConfig,
       },
     });
+
+  const pluginDir = path.resolve(baseDir, process.platform === 'win32' ? './.paperist' : './.paperist/lib');
   for (const pluginName of Object.keys(plugins)) {
-    const requirePath = resolveFrom(path.resolve(baseDir, './.paperist'), pluginName);
+    const requirePath = resolveFrom(pluginDir, pluginName);
     processor = processor.use(require(requirePath), plugins[pluginName]);
   }
 
