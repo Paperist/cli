@@ -85,7 +85,7 @@ export default class TemplatePackage {
   async clone() {
     const info = this.gitInfo;
     const git = simpleGit(process.cwd());
-    await git.clone(info.https({ noGitPlus: true }), this.tmpPath);
+    await git.clone(info.https({ noGitPlus: true }), this.tmpPath, ['--depth=1']);
     await fs.remove(path.resolve(this.tmpPath, './.git'));
 
     const pluginConfigPath = path.resolve(this.tmpPath, './paperist.plugin.yml');
