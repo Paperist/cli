@@ -28,7 +28,7 @@
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "dependencies": {
-    "@paperist/remark-latex": "^1.1.0",
+    "@paperist/remark-latex": "^2.0.0",
     "axios": "^0.17.0",
     "chalk": "^2.3.0",
     "core-decorators": "^0.20.0",
