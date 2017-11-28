@@ -6,14 +6,6 @@ export default `
 !.paperist
 !.paperist/**/*
 .paperist/**/*.patch
-!src
-!src/**/*
-!bibs
-!bibs/**/*
-!assets
-!assets/**/*
-!fonts
-!fonts/**/*
 !latexmkrc
 
 ### Disallow ###
