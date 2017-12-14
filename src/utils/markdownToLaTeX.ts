@@ -6,6 +6,10 @@ import * as MarkdownPlugin from 'remark-parse';
 import resolveFrom = require('resolve-from');
 import * as LaTeXPlugin from '@paperist/remark-latex';
 import Config from './Config';
+import autoLinkPatch = require('../patches/auto-link');
+
+// Note: https://github.com/remarkjs/remark/pull/293
+MarkdownPlugin.Parser.prototype.inlineTokenizers['autoLink'] = autoLinkPatch;
 
 const defaultConfig = {
   templatesDir: '.paperist/ejs',
